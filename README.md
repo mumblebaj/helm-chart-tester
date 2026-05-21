@@ -7,6 +7,7 @@
 ### For Helm mode (default)
 - Node.js 18+
 - Helm installed and available on `PATH`
+  - On Windows, install Helm with `winget install Helm.Helm`
 
 ### For YAML file mode (--yaml-file)
 - Node.js 18+
@@ -73,7 +74,13 @@ Validate a multi-document YAML file:
 ```bash
 chart-test test-fixtures/deprecated-and-ingress.yaml --yaml-file --target openshift
 ```
+Validate all YAML files in a directory and resolve cross-file references:
 
+```bash
+node bin/chart-test test-cron --yaml-file --target openshift
+```
+
+> Note: `--yaml-file` mode reads all `*.yaml` and `*.yml` files recursively under the given path. It validates references such as ServiceAccount, ConfigMap, Secret, PersistentVolumeClaim and Service names across all loaded documents.
 ## What It Does
 
 ### Helm Mode

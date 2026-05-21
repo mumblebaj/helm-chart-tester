@@ -1,0 +1,11 @@
+{{- if .Values.configScripts.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "my-chart.fullname" . }}-scripts
+data:
+{{- range $name, $content := .Values.configScripts.scripts }}
+  {{ $name }}: |
+{{ $content | indent 4 }}
+{{- end }}
+{{- end }}
