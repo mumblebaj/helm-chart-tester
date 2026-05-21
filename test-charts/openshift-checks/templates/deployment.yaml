@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openshift-checks-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: openshift-checks
+  template:
+    metadata:
+      labels:
+        app: openshift-checks
+    spec:
+      containers:
+        - name: app
+          image: nginx:latest
+          securityContext:
+            privileged: true
+            runAsUser: 1001
+          resources:
+            requests: {}
+            limits: {}
+          ports:
+            - containerPort: 80
+      volumes:
+        - name: hostpath-vol
+          hostPath:
+            path: /tmp
+            type: Directory

@@ -1,0 +1,5 @@
+apiVersion: v2
+name: openshift-checks
+description: Chart to exercise OpenShift compatibility checks
+version: 0.1.0
+appVersion: 1.0.0

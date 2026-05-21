@@ -1,0 +1,5 @@
+apiVersion: v2
+name: bad-chart
+description: A chart with an intentional issue for local validation
+version: 0.1.0
+appVersion: 1.0.0
